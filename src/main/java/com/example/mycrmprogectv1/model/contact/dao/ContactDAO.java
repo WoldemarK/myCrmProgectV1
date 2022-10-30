@@ -18,7 +18,7 @@ public interface ContactDAO {
 
     List<Contact> findByAllContact() throws SQLException;
 
-    void findByCompanyAndContact()throws SQLException;
+    void findByContactAndCompany()throws SQLException;
 
     void update(int id, Contact contact) throws SQLException;
 

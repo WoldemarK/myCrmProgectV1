@@ -78,7 +78,7 @@ public class ContactDAOImpl implements ContactDAO {
      * @throws SQLException
      */
     @Override
-    public void findByCompanyAndContact() throws SQLException {
+    public void findByContactAndCompany() throws SQLException {
         return jdbcTemplate
                 .query("select * from contact left join company on contact_id = company_id");
     }
