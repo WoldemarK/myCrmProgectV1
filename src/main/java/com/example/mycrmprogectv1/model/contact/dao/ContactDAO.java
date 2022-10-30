@@ -14,11 +14,11 @@ public interface ContactDAO {
 
     Contact findByName(String nameContact)throws SQLException;
 
-    Company findByPhoneNumber(String phoneNumber)throws SQLException;
+    Contact findByPhoneNumber(String phoneNumber)throws SQLException;
 
     List<Contact> findByAllContact() throws SQLException;
 
-    Contact findByCompany(Company company)throws SQLException;
+    void findByCompanyAndContact()throws SQLException;
 
     void update(int id, Contact contact) throws SQLException;
 
