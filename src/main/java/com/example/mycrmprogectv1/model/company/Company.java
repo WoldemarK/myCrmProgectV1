@@ -28,7 +28,6 @@ public class Company {
         this.typeCompany = getTypeCompany();
     }
 
-
     public enum Type {
         CLIENT,
         SUPPLIER,
