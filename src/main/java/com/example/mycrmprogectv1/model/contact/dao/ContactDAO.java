@@ -1,11 +1,11 @@
 package com.example.mycrmprogectv1.model.contact.dao;
 import com.example.mycrmprogectv1.model.company.Company;
 import com.example.mycrmprogectv1.model.contact.Contact;
+import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 import java.util.List;
-
-
+@Component
 public interface ContactDAO {
 
     void save(Contact contact) throws SQLException;
