@@ -1,16 +1,15 @@
 package com.example.mycrmprogectv1.model.contact.dao;
 
-import com.example.mycrmprogectv1.model.company.Company;
 import com.example.mycrmprogectv1.model.contact.Contact;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.util.List;
 
-@Component
+@Repository
 @RequiredArgsConstructor
 public class ContactDAOImpl implements ContactDAO {
 
@@ -18,7 +17,7 @@ public class ContactDAOImpl implements ContactDAO {
 
     @Override
     public void save(Contact contact) throws SQLException {
-        jdbcTemplate.update("insert into concat(name,surname,phoneNumber," +
+        jdbcTemplate.update("insert into contact(name,surname,phoneNumber," +
                         "city,country,address,email" +
                         ",postOn,companyId,post)" +
                         "values (?,?,?,?,?,?,?,?,?,?)",
@@ -37,9 +36,9 @@ public class ContactDAOImpl implements ContactDAO {
     }
 
     @Override
-    public Contact findById(Long id) throws SQLException {
-        return jdbcTemplate.query("select *from contact where id=?",
-                        new Object[]{id},
+    public Contact findById(Long contactId) throws SQLException {
+        return jdbcTemplate.query("select *from contact where contactId=?",
+                        new Object[]{contactId},
                         new BeanPropertyRowMapper<>(Contact.class))
                 .stream()
                 .findAny()
@@ -47,9 +46,9 @@ public class ContactDAOImpl implements ContactDAO {
     }
 
     @Override
-    public Contact findByName(String nameContact) throws SQLException {
-        return jdbcTemplate.query("select *from contact where nameContact=?",
-                        new Object[]{nameContact},
+    public Contact findByName(String name) throws SQLException {
+        return jdbcTemplate.query("select *from contact where name=?",
+                        new Object[]{name},
                         new BeanPropertyRowMapper<>(Contact.class))
                 .stream()
                 .findAny()
@@ -72,20 +71,25 @@ public class ContactDAOImpl implements ContactDAO {
                 new BeanPropertyRowMapper<>(Contact.class));
     }
 
+    @Override
+    public void findByContactAndCompany() throws SQLException {
+
+    }
+
     /**
      * Нужен Mapper-?
      *
      * @throws SQLException
      */
-    @Override
-    public void findByContactAndCompany() throws SQLException {
-        return jdbcTemplate
-                .query("select * from contact left join company on contact_id = company_id");
-    }
+//    @Override
+//    public void findByContactAndCompany() throws SQLException {
+//        return jdbcTemplate
+//                .query("select * from contact left join company on contact_id = company_id");
+//    }
 
     @Override
-    public void update(int id, Contact contact) throws SQLException {
-        jdbcTemplate.update("update concat set " +
+    public void update(Long contactId, Contact contact) throws SQLException {
+        jdbcTemplate.update("update contact set " +
                         "name=?," +
                         "surname=?," +
                         "phoneNumber=?," +
@@ -95,7 +99,7 @@ public class ContactDAOImpl implements ContactDAO {
                         "email=?," +
                         "postOn=?," +
                         "companyId=?," +
-                        "post=? where id=?",
+                        "post=? where contactId=?",
                 contact.getName(),
                 contact.getSurname(),
                 contact.getPhoneNumber(),
@@ -106,11 +110,11 @@ public class ContactDAOImpl implements ContactDAO {
                 contact.getPost(),
                 contact.getPost(),
                 contact.getContactId(),
-                contact.getPostOn(), id);
+                contact.getPostOn(), contactId);
     }
 
     @Override
-    public void delete(int id) throws SQLException {
-        jdbcTemplate.update("delete from contact where id=?", id);
+    public void delete(Long contactId) throws SQLException {
+        jdbcTemplate.update("delete from contact where contactId=?", contactId);
     }
 }

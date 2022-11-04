@@ -9,7 +9,7 @@ public interface EmployeeDAO {
 
     void save(Employee employee) throws SQLException;
 
-    Employee getByName(String name) throws SQLException;
+    Employee getName(String name) throws SQLException;
 
     Employee getById(Long id) throws SQLException;
 

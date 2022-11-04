@@ -10,6 +10,23 @@ public class Action {
     private String name;
     private TypeAction action;
 
+    public Action(String name, TypeAction action) {
+        this.name = name;
+        this.action = action;
+    }
+
+    public Action() {
+
+    }
+
+    public Action(TypeAction action) {
+        this.action = action;
+    }
+
+    public Object getTypeAction() {
+        return null;
+    }
+
     public enum TypeAction {
         CALL,
         SHOUT,

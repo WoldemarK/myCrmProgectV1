@@ -10,9 +10,9 @@ public interface ContactDAO {
 
     void save(Contact contact) throws SQLException;
 
-    Contact findById(Long id)throws SQLException;
+    Contact findById(Long contactId)throws SQLException;
 
-    Contact findByName(String nameContact)throws SQLException;
+    Contact findByName(String name)throws SQLException;
 
     Contact findByPhoneNumber(String phoneNumber)throws SQLException;
 
@@ -20,9 +20,9 @@ public interface ContactDAO {
 
     void findByContactAndCompany()throws SQLException;
 
-    void update(int id, Contact contact) throws SQLException;
+    void update(Long contactId, Contact contact) throws SQLException;
 
-    void delete(int id)throws SQLException;
+    void delete(Long contactId)throws SQLException;
 
 
 }

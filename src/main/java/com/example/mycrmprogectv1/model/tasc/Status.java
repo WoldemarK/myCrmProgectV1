@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class Status {
     private Long statusId;
     private String name;
-    private TypeStatus status;
+    private TypeStatus typeStatus;
 
 
     public enum TypeStatus {

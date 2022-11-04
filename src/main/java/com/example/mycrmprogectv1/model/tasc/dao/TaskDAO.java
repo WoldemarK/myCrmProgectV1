@@ -1,8 +1,7 @@
 package com.example.mycrmprogectv1.model.tasc.dao;
 
-import com.example.mycrmprogectv1.model.tasc.Action;
-import com.example.mycrmprogectv1.model.tasc.Status;
 import com.example.mycrmprogectv1.model.tasc.Task;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -20,9 +19,4 @@ public interface TaskDAO {
 
     List<Task> getAllTask();
 
-    Task getTaskAction(Action action);
-    Task getTaskActionType(Action.TypeAction action);
-
-    Task getTaskStatus(Status status);
-    Task getTaskStatusType(Status.TypeStatus status);
 }

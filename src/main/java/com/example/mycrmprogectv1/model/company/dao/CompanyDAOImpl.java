@@ -5,11 +5,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.util.List;
 
-@Component
+@Repository
 @RequiredArgsConstructor
 public class CompanyDAOImpl implements CompanyDAO {
 
@@ -17,9 +18,7 @@ public class CompanyDAOImpl implements CompanyDAO {
 
     @Override
     public void save(Company company) throws SQLException {
-        jdbcTemplate.update("insert into company (name, phoneNumber,city,country,address,email " +
-                        ",website,comment,contact,typeCompany,creation) " +
-                        "values(?,?,?,?,?,?,?,?,?,?,?) ",
+        jdbcTemplate.update("insert into company values(?,?,?,?,?,?,?,?,?,?,?)",
                 company.getName(),
                 company.getPhoneNumber(),
                 company.getCity(),
