@@ -1,15 +1,16 @@
-package com.example.mycrmprogectv1.model.company.employee;
+package com.example.mycrmprogectv1.model.employee;
 
 import com.example.mycrmprogectv1.model.company.Company;
-import com.example.mycrmprogectv1.model.contact.Contact;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
 @Data
+@Component
 public class Employee {
 
-    private Long id;
+    private Long employeeId;
     private String name;
     private String surname;
     private String phoneNumber;
@@ -24,7 +25,8 @@ public class Employee {
     private Company companyId;
     private TypePost post;
 
-    public Employee() {
+    public Employee(Company company) {
+        this.companyId = company;
         this.post = getPost();
     }
 
@@ -33,7 +35,7 @@ public class Employee {
         PURCHASING,
         DIRECTOR,
         ADMINISTRATOR,
-        LAWYER,ACCOUNTANT,
+        LAWYER, ACCOUNTANT,
         WAREHOUSE_MANAGER,
         DEPARTMENT_HEAD,
         GENERAL_DIRECTOR,

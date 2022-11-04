@@ -28,7 +28,7 @@ public class CompanyDAOImpl implements CompanyDAO {
                 company.getEmail(),
                 company.getWebsite(),
                 company.getComment(),
-                company.getContact(),
+                company.getContactId(),
                 company.getTypeCompany(),
                 company.getCreation());
     }
@@ -81,7 +81,7 @@ public class CompanyDAOImpl implements CompanyDAO {
                 company.getEmail(),
                 company.getWebsite(),
                 company.getComment(),
-                company.getContact(),
+                company.getContactId(),
                 company.getTypeCompany(),
                 company.getCreation(), id);
     }

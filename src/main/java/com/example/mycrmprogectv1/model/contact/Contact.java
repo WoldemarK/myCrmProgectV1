@@ -2,8 +2,10 @@ package com.example.mycrmprogectv1.model.contact;
 
 import com.example.mycrmprogectv1.model.company.Company;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 @Data
+@Component
 public class Contact {
 
     private Long contactId;
@@ -20,8 +22,9 @@ public class Contact {
     private Company companyId;
     private TypePost post;
 
-    public Contact() {
+    public Contact(Company company) {
         this.post = getPost();
+        this.companyId = company;
     }
 
     public enum TypePost {

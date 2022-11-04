@@ -1,10 +1,12 @@
 package com.example.mycrmprogectv1.model.tasc;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 @Data
+@Component
 public class Action {
-    private Long id;
+    private Long actionId;
     private String name;
     private TypeAction action;
 

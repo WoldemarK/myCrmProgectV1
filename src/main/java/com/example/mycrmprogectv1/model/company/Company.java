@@ -1,10 +1,12 @@
 package com.example.mycrmprogectv1.model.company;
 import com.example.mycrmprogectv1.model.contact.Contact;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
 @Data
+@Component
 public class Company {
 
     private Long companyId;
@@ -20,12 +22,13 @@ public class Company {
     private String comment;
     private LocalDateTime creation;
 
-    private Contact contact;
+    private Contact contactId;
     private Type typeCompany;
 
-    public Company() {
+    public Company(Contact contactId) {
         creation = LocalDateTime.now();
         this.typeCompany = getTypeCompany();
+        this.contactId = contactId;
     }
 
     public enum Type {

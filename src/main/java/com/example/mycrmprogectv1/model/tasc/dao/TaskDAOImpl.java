@@ -3,11 +3,15 @@ package com.example.mycrmprogectv1.model.tasc.dao;
 import com.example.mycrmprogectv1.model.tasc.Action;
 import com.example.mycrmprogectv1.model.tasc.Status;
 import com.example.mycrmprogectv1.model.tasc.Task;
+import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
+@RequiredArgsConstructor
 public class TaskDAOImpl implements TaskDAO{
-
+    private final JdbcTemplate jdbcTemplate;
 
     @Override
     public void save(Task task) {

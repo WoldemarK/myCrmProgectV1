@@ -1,7 +1,6 @@
-package com.example.mycrmprogectv1.model.company.employee.dao;
+package com.example.mycrmprogectv1.model.employee.dao;
 
-import com.example.mycrmprogectv1.model.company.employee.Employee;
-import com.example.mycrmprogectv1.model.contact.Contact;
+import com.example.mycrmprogectv1.model.employee.Employee;
 
 import java.sql.SQLException;
 import java.util.List;
