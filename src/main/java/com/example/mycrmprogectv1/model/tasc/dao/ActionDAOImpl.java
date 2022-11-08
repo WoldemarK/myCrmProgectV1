@@ -39,14 +39,6 @@ public class ActionDAOImpl implements ActionDAO {
                 .orElse(null);
     }
 
-    @Override
-    public Action findByActionTyp(Action.TypeAction typeAction) {
-        return jdbcTemplate.query("select *from action where typeAction=?",
-                        new Object[]{typeAction}, new BeanPropertyRowMapper<>(Action.class))
-                .stream()
-                .findAny()
-                .orElse(null);
-    }
 
     @Override
     public List<Action> getAllAction() {

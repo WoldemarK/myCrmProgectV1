@@ -12,7 +12,7 @@ public interface CompanyDAO {
 
     Company findByName(String nameCompany)throws SQLException;
 
-    Company findByCompanyTyp(Company.Type type);
+    Company findByCompanyTyp(Company.TypeCompany typeCompany);
 
     List<Company> findByAllCompany() throws SQLException;
 

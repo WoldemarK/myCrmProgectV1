@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Data
-@Component
 public class Company {
 
     private Long companyId;
@@ -23,15 +22,9 @@ public class Company {
     private LocalDateTime creation;
 
     private Contact contactId;
-    private Type typeCompany;
+    private TypeCompany typeCompany;
 
-    public Company(Contact contactId) {
-        creation = LocalDateTime.now();
-        this.typeCompany = getTypeCompany();
-        this.contactId = contactId;
-    }
-
-    public enum Type {
+    public enum TypeCompany {
         CLIENT,
         SUPPLIER,
         COMPETITOR,

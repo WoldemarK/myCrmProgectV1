@@ -2,12 +2,10 @@ package com.example.mycrmprogectv1.model.employee;
 
 import com.example.mycrmprogectv1.model.company.Company;
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
 @Data
-@Component
 public class Employee {
 
     private Long employeeId;
@@ -24,11 +22,6 @@ public class Employee {
     private LocalDateTime birth;
     private Company companyId;
     private TypePost post;
-
-    public Employee(Company company) {
-        this.companyId = company;
-        this.post = getPost();
-    }
 
     public enum TypePost {
         MANAGER,

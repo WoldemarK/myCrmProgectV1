@@ -4,7 +4,6 @@ import com.example.mycrmprogectv1.model.company.Company;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
@@ -52,10 +51,10 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
     @Override
-    public Company findByCompanyTyp(Company.Type type) {
+    public Company findByCompanyTyp(Company.TypeCompany typeCompany) {
         jdbcTemplate.query("select *from company where type=?",
-                        new Object[]{type},
-                        new BeanPropertyRowMapper<>(Company.Type.class))
+                        new Object[]{typeCompany},
+                        new BeanPropertyRowMapper<>(Company.TypeCompany.class))
                 .stream()
                 .findAny();
         return null;

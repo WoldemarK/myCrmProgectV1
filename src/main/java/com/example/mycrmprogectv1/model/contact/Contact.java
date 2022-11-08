@@ -5,7 +5,6 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 @Data
-@Component
 public class Contact {
 
     private Long contactId;
@@ -22,10 +21,6 @@ public class Contact {
     private Company companyId;
     private TypePost post;
 
-    public Contact(Company company) {
-        this.post = getPost();
-        this.companyId = company;
-    }
 
     public enum TypePost {
         MANAGER, PURCHASING, DIRECTOR,
