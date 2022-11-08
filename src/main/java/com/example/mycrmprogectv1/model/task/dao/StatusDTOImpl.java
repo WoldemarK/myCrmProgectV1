@@ -1,6 +1,6 @@
-package com.example.mycrmprogectv1.model.tasc.dao;
+package com.example.mycrmprogectv1.model.task.dao;
 
-import com.example.mycrmprogectv1.model.tasc.Status;
+import com.example.mycrmprogectv1.model.task.Status;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

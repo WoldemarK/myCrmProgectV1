@@ -1,8 +1,7 @@
-package com.example.mycrmprogectv1.model.tasc.controller;
+package com.example.mycrmprogectv1.model.task.controller;
 
-import com.example.mycrmprogectv1.model.tasc.Task;
-import com.example.mycrmprogectv1.model.tasc.dao.TaskDAOImpl;
-import lombok.Data;
+import com.example.mycrmprogectv1.model.task.Task;
+import com.example.mycrmprogectv1.model.task.dao.TaskDAOImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

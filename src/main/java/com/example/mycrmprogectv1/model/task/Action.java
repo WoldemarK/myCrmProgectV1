@@ -1,4 +1,4 @@
-package com.example.mycrmprogectv1.model.tasc;
+package com.example.mycrmprogectv1.model.task;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
-package com.example.mycrmprogectv1.model.tasc.dao;
+package com.example.mycrmprogectv1.model.task.dao;
 
-import com.example.mycrmprogectv1.model.tasc.Action;
+import com.example.mycrmprogectv1.model.task.Action;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -42,7 +42,7 @@ public class ActionDAOImpl implements ActionDAO {
 
     @Override
     public List<Action> getAllAction() {
-        return jdbcTemplate.query("select*from action",
+        return jdbcTemplate.query("select * from action",
                 new BeanPropertyRowMapper<>(Action.class));
     }
 

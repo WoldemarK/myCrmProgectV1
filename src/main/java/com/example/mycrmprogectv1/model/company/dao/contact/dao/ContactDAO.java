@@ -1,6 +1,5 @@
-package com.example.mycrmprogectv1.model.contact.dao;
-import com.example.mycrmprogectv1.model.company.Company;
-import com.example.mycrmprogectv1.model.contact.Contact;
+package com.example.mycrmprogectv1.model.company.dao.contact.dao;
+import com.example.mycrmprogectv1.model.company.dao.contact.Contact;
 import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
@@ -16,7 +15,7 @@ public interface ContactDAO {
 
     Contact findByPhoneNumber(String phoneNumber)throws SQLException;
 
-    List<Contact> findByAllContact() throws SQLException;
+    List<Contact> getAllContact() throws SQLException;
 
     void findByContactAndCompany()throws SQLException;
 

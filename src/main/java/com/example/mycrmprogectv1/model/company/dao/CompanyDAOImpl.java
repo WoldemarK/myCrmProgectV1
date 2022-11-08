@@ -1,6 +1,7 @@
 package com.example.mycrmprogectv1.model.company.dao;
 
 import com.example.mycrmprogectv1.model.company.Company;
+import com.example.mycrmprogectv1.model.company.mapper.CompanyMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -32,8 +33,8 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
     @Override
-    public Company findById(Long id) throws SQLException {
-        return jdbcTemplate.query("select *from company where id=?", new Object[]{id},
+    public Company findById(Long companyId) throws SQLException {
+        return jdbcTemplate.query("select *from company where companyId=?", new Object[]{companyId},
                         new BeanPropertyRowMapper<>(Company.class))
                 .stream()
                 .findAny()
@@ -41,36 +42,28 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
     @Override
-    public Company findByName(String nameCompany) throws SQLException {
-        return jdbcTemplate.query("select *from company where nameCompany=?",
-                        new Object[]{nameCompany},
+    public Company findByName(String name) throws SQLException {
+        return jdbcTemplate.query("select *from company where name=?",
+                        new Object[]{name},
                         new BeanPropertyRowMapper<>(Company.class))
                 .stream()
                 .findAny()
                 .orElse(null);
     }
 
+
     @Override
-    public Company findByCompanyTyp(Company.TypeCompany typeCompany) {
-        jdbcTemplate.query("select *from company where type=?",
-                        new Object[]{typeCompany},
-                        new BeanPropertyRowMapper<>(Company.TypeCompany.class))
-                .stream()
-                .findAny();
-        return null;
+    public List<Company> getAllCompany() throws SQLException {
+        return jdbcTemplate.query("select * from company " +
+                        "join contact c on c.contactid = company.contactid",
+                new CompanyMapper());
     }
 
     @Override
-    public List<Company> findByAllCompany() throws SQLException {
-        return jdbcTemplate.query("select * from company",
-                new BeanPropertyRowMapper<>(Company.class));
-    }
-
-    @Override
-    public void update(int id, Company company) throws SQLException {
+    public void update(Long companyId, Company company) throws SQLException {
         jdbcTemplate.update("update company set name=?, phoneNumber=? ," +
                         "city=?,country=?,address=?,email=? ,website=?,comment=?, " +
-                        "contact=?,typeCompany=?,creation=? WHERE id=?",
+                        "contactId=?,typeCompany=?,creation=? WHERE companyId=?",
                 company.getName(),
                 company.getPhoneNumber(),
                 company.getCity(),
@@ -81,11 +74,11 @@ public class CompanyDAOImpl implements CompanyDAO {
                 company.getComment(),
                 company.getContactId(),
                 company.getTypeCompany(),
-                company.getCreation(), id);
+                company.getCreation(), companyId);
     }
 
     @Override
-    public void delete(int id) throws SQLException {
-        jdbcTemplate.update("delete from company where id=?", id);
+    public void delete(Long companyId) throws SQLException {
+        jdbcTemplate.update("delete from company where companyId=?", companyId);
     }
 }

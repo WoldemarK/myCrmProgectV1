@@ -1,7 +1,6 @@
-package com.example.mycrmprogectv1.model.tasc.dao;
+package com.example.mycrmprogectv1.model.task.dao;
 
-import com.example.mycrmprogectv1.model.tasc.Task;
-import org.springframework.stereotype.Component;
+import com.example.mycrmprogectv1.model.task.Task;
 
 import java.util.List;
 

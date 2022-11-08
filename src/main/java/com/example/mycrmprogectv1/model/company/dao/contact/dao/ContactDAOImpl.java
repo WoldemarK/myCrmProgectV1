@@ -1,6 +1,7 @@
-package com.example.mycrmprogectv1.model.contact.dao;
+package com.example.mycrmprogectv1.model.company.dao.contact.dao;
 
-import com.example.mycrmprogectv1.model.contact.Contact;
+import com.example.mycrmprogectv1.model.company.dao.contact.Contact;
+import com.example.mycrmprogectv1.model.company.dao.contact.mapper.ContactMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -66,9 +67,10 @@ public class ContactDAOImpl implements ContactDAO {
     }
 
     @Override
-    public List<Contact> findByAllContact() throws SQLException {
-        return jdbcTemplate.query("select * from contact",
-                new BeanPropertyRowMapper<>(Contact.class));
+    public List<Contact> getAllContact() throws SQLException {
+        return jdbcTemplate.query("select * from contact " +
+                        "join company c on c.companyid = contact.companyid",
+                new ContactMapper());
     }
 
     @Override
@@ -76,17 +78,7 @@ public class ContactDAOImpl implements ContactDAO {
 
     }
 
-    /**
-     * Нужен Mapper-?
-     *
-     * @throws SQLException
-     */
-//    @Override
-//    public void findByContactAndCompany() throws SQLException {
-//        return jdbcTemplate
-//                .query("select contact.* from contact left join company on contact_id = company_id");
-//
-//    }
+
 
     @Override
     public void update(Long contactId, Contact contact) throws SQLException {

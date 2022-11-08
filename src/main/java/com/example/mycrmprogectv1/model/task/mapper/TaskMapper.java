@@ -1,11 +1,11 @@
-package com.example.mycrmprogectv1.model.tasc.mapper;
+package com.example.mycrmprogectv1.model.task.mapper;
 
 import com.example.mycrmprogectv1.model.company.Company;
-import com.example.mycrmprogectv1.model.contact.Contact;
+import com.example.mycrmprogectv1.model.company.dao.contact.Contact;
 import com.example.mycrmprogectv1.model.employee.Employee;
-import com.example.mycrmprogectv1.model.tasc.Action;
-import com.example.mycrmprogectv1.model.tasc.Status;
-import com.example.mycrmprogectv1.model.tasc.Task;
+import com.example.mycrmprogectv1.model.task.Action;
+import com.example.mycrmprogectv1.model.task.Status;
+import com.example.mycrmprogectv1.model.task.Task;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

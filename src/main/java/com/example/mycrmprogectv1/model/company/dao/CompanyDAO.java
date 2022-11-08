@@ -12,13 +12,11 @@ public interface CompanyDAO {
 
     Company findByName(String nameCompany)throws SQLException;
 
-    Company findByCompanyTyp(Company.TypeCompany typeCompany);
+    List<Company> getAllCompany() throws SQLException;
 
-    List<Company> findByAllCompany() throws SQLException;
+    void update(Long id, Company company) throws SQLException;
 
-    void update(int id, Company company) throws SQLException;
-
-    void delete(int id)throws SQLException;
+    void delete(Long id)throws SQLException;
 
 
 }

@@ -1,7 +1,7 @@
-package com.example.mycrmprogectv1.model.contact.controller;
+package com.example.mycrmprogectv1.model.company.dao.contact.controller;
 
-import com.example.mycrmprogectv1.model.contact.Contact;
-import com.example.mycrmprogectv1.model.contact.dao.ContactDAO;
+import com.example.mycrmprogectv1.model.company.dao.contact.Contact;
+import com.example.mycrmprogectv1.model.company.dao.contact.dao.ContactDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +16,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ContactController {
 
-    private final ContactDAO contactDAO;
+    public final ContactDAO contactDAO;
 
     @GetMapping
     public ResponseEntity<List<Contact>>getAllContact() throws SQLException {
-        return ResponseEntity.ok(contactDAO.findByAllContact());
+        return ResponseEntity.ok(contactDAO.getAllContact());
     }
 }

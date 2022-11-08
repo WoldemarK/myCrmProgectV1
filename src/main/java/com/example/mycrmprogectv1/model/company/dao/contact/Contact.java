@@ -1,4 +1,4 @@
-package com.example.mycrmprogectv1.model.contact;
+package com.example.mycrmprogectv1.model.company.dao.contact;
 
 import com.example.mycrmprogectv1.model.company.Company;
 import lombok.Data;

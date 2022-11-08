@@ -1,12 +1,19 @@
 package com.example.mycrmprogectv1.model.employee.dao;
 
 import com.example.mycrmprogectv1.model.employee.Employee;
+import com.example.mycrmprogectv1.model.employee.mapper.EmpMapper;
+import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.util.List;
+
 @Repository
-public class EmployeeDAOImpl implements EmployeeDAO{
+@RequiredArgsConstructor
+public class EmployeeDAOImpl implements EmployeeDAO {
+    private final JdbcTemplate jdbcTemplate;
+
     @Override
     public void save(Employee employee) throws SQLException {
 
@@ -44,6 +51,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
     @Override
     public List<Employee> getAllEmployee() {
-        return null;
+        return jdbcTemplate.query("select * from employee " +
+                "join company c on c.companyid = employee.companyid", new EmpMapper());
     }
 }

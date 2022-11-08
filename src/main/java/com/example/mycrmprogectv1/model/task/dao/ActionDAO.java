@@ -1,7 +1,7 @@
-package com.example.mycrmprogectv1.model.tasc.dao;
+package com.example.mycrmprogectv1.model.task.dao;
 
 
-import com.example.mycrmprogectv1.model.tasc.Action;
+import com.example.mycrmprogectv1.model.task.Action;
 
 import java.util.List;
 

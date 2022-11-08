@@ -1,7 +1,6 @@
 package com.example.mycrmprogectv1.model.company;
-import com.example.mycrmprogectv1.model.contact.Contact;
+import com.example.mycrmprogectv1.model.company.dao.contact.Contact;
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 

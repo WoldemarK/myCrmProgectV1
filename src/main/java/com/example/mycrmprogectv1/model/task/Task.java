@@ -1,10 +1,9 @@
-package com.example.mycrmprogectv1.model.tasc;
+package com.example.mycrmprogectv1.model.task;
 
 import com.example.mycrmprogectv1.model.company.Company;
 import com.example.mycrmprogectv1.model.employee.Employee;
 import lombok.Data;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Data

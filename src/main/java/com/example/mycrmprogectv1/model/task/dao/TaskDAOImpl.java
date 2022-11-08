@@ -1,15 +1,11 @@
-package com.example.mycrmprogectv1.model.tasc.dao;
+package com.example.mycrmprogectv1.model.task.dao;
 
-import com.example.mycrmprogectv1.model.tasc.Task;
-import com.example.mycrmprogectv1.model.tasc.mapper.TaskMapper;
+import com.example.mycrmprogectv1.model.task.Task;
+import com.example.mycrmprogectv1.model.task.mapper.TaskMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -24,8 +20,9 @@ public class TaskDAOImpl implements TaskDAO {
 
     @Override
     public Task findById(Long taskId) {
-        return jdbcTemplate.query("select * from task where taskId=?", new Object[]{taskId},
-                        new BeanPropertyRowMapper<>(Task.class))
+        return jdbcTemplate.query("select * from task where taskId=?",
+                        new Object[]{taskId},
+                        new TaskMapper())
                 .stream()
                 .findAny()
                 .orElse(null);
@@ -35,7 +32,7 @@ public class TaskDAOImpl implements TaskDAO {
     public Task findByName(String name) {
         return jdbcTemplate.query("select * from task where name=?",
                         new Object[]{name},
-                        new BeanPropertyRowMapper<>(Task.class))
+                        new TaskMapper())
                 .stream()
                 .findAny()
                 .orElse(null);
