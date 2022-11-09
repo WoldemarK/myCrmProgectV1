@@ -15,9 +15,9 @@ public interface EmployeeDAO {
 
     Employee findByPhoneNumber(String phoneNumber) throws SQLException;
 
-    void update(int id, Employee employee) throws SQLException;
+    void update(Long id, Employee employee) throws SQLException;
 
-    void delete(int id) throws SQLException;
+    void delete(Long id) throws SQLException;
 
     Employee getByTypePost(Employee.TypePost typePost);
 

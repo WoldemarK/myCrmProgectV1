@@ -16,32 +16,38 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public void save(Employee employee) throws SQLException {
-
+        jdbcTemplate.update("insert into employee values (?,?,?,?,?,?,?,?,?,?,?,?)");
     }
 
     @Override
     public Employee getName(String name) throws SQLException {
-        return null;
+        return jdbcTemplate.query("select * from employee where name=?",
+                new Object[]{name},
+                new EmpMapper()).stream().findAny().orElse(null);
     }
 
     @Override
-    public Employee getById(Long id) throws SQLException {
-        return null;
+    public Employee getById(Long taskId) throws SQLException {
+        return jdbcTemplate.query("select * from employee where taskId=?",
+                new Object[]{taskId},
+                new EmpMapper()).stream().findAny().orElse(null);
     }
 
     @Override
     public Employee findByPhoneNumber(String phoneNumber) throws SQLException {
-        return null;
+        return jdbcTemplate.query("select * from employee where phoneNumber=?",
+                new Object[]{phoneNumber},
+                new EmpMapper()).stream().findAny().orElse(null);
     }
 
     @Override
-    public void update(int id, Employee employee) throws SQLException {
+    public void update(Long employeeId, Employee employee) throws SQLException {
 
     }
 
     @Override
-    public void delete(int id) throws SQLException {
-
+    public void delete(Long employeeId) throws SQLException {
+        jdbcTemplate.update("delete from employee where employeeId=?", employeeId);
     }
 
     @Override
@@ -51,7 +57,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public List<Employee> getAllEmployee() {
-        return jdbcTemplate.query("select * from employee " +
+        return jdbcTemplate.query("select * from employee " + "" +
                 "join company c on c.companyid = employee.companyid", new EmpMapper());
     }
 }
