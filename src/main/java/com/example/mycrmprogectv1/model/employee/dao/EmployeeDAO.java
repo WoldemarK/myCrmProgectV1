@@ -19,8 +19,6 @@ public interface EmployeeDAO {
 
     void delete(Long id) throws SQLException;
 
-    Employee getByTypePost(Employee.TypePost typePost);
-
-    List<Employee>getAllEmployee();
+    List<Employee> getAllEmployee();
 
 }

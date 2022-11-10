@@ -16,19 +16,19 @@ public class TaskMapper implements RowMapper<Task> {
     public Task mapRow(ResultSet rs, int rowNum) throws SQLException {
 
         Task task = new Task();
-        //task.setTaskId(rs.getLong("id"));
+        task.setTaskId(rs.getLong("id"));
         task.setName(rs.getString("name"));
         task.setDescription(rs.getString("description"));
 
 
-        //task.setCreation(rs.getTimestamp("creation"));   // LocalDateTime
+        task.setCreation(rs.getTimestamp("creation").toLocalDateTime()); // до работать
         //task.setStart(rs.getTimestamp("start"));         // LocalDateTime
         //task.setEnding(rs.getTimestamp("ending"));       // LocalDateTime
 
         Action action = new Action();
         action.setActionId(rs.getLong("actionId"));
         action.setName(rs.getString("name"));
-       // action.setTypeAction(TypeAction.valueOf(rs.getString("typeAction")));
+        // action.setTypeAction(TypeAction.valueOf(rs.getString("typeAction")));
         task.setActionId(action);//7 task
 
         Status status = new Status();
@@ -80,7 +80,7 @@ public class TaskMapper implements RowMapper<Task> {
         employee.setEmail(rs.getString("email"));
         employee.setPostOn(rs.getString("postOn"));
         employee.setAge(rs.getInt("age"));
-       // employee.setBirth(rs.getTimestamp("birth"));// LocalDateTime
+        // employee.setBirth(rs.getTimestamp("birth"));// LocalDateTime
         employee.setCompanyId(company);
         employee.setPost(Employee.TypePost.valueOf(rs.getString("post")));
 

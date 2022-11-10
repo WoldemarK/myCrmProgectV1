@@ -2,12 +2,12 @@ package com.example.mycrmprogectv1.model.employee.controller;
 
 import com.example.mycrmprogectv1.model.employee.Employee;
 import com.example.mycrmprogectv1.model.employee.dao.EmployeeDAOImpl;
+import com.example.mycrmprogectv1.model.employee.mapper.EmpMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -20,5 +20,9 @@ public class EmployeeController {
     @GetMapping
     public ResponseEntity<List<Employee>>getAll(){
         return ResponseEntity.ok(employeeDAO.getAllEmployee());
+    }
+    @PostMapping
+    public void save(@RequestBody Employee employee) throws SQLException {
+        employeeDAO.save(employee);
     }
 }

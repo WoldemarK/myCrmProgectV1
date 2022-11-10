@@ -16,28 +16,52 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public void save(Employee employee) throws SQLException {
-        jdbcTemplate.update("insert into employee values (?,?,?,?,?,?,?,?,?,?,?,?)");
+        jdbcTemplate.update("insert into employee " +
+                        "(employeeId,name,surname,phoneNumber,city,country,address,email,postOn,age,birth,companyId,post) " +
+                        "values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                employee.getEmployeeId(),
+                employee.getName(),
+                employee.getSurname(),
+                employee.getPhoneNumber(),
+                employee.getCity(),
+                employee.getCountry(),
+                employee.getAddress(),
+                employee.getEmail(),
+                employee.getPostOn(),
+                employee.getAge(),
+                employee.getBirth(),
+                employee.getCompanyId().getCompanyId(),
+                employee.getPost().toString());
     }
 
     @Override
     public Employee getName(String name) throws SQLException {
         return jdbcTemplate.query("select * from employee where name=?",
-                new Object[]{name},
-                new EmpMapper()).stream().findAny().orElse(null);
+                        new Object[]{name},
+                        new EmpMapper())
+                .stream()
+                .findAny()
+                .orElse(null);
     }
 
     @Override
-    public Employee getById(Long taskId) throws SQLException {
-        return jdbcTemplate.query("select * from employee where taskId=?",
-                new Object[]{taskId},
-                new EmpMapper()).stream().findAny().orElse(null);
+    public Employee getById(Long employeeId) throws SQLException {
+        return jdbcTemplate.query("select * from employee where employeeId=?",
+                        new Object[]{employeeId},
+                        new EmpMapper())
+                .stream()
+                .findAny()
+                .orElse(null);
     }
 
     @Override
     public Employee findByPhoneNumber(String phoneNumber) throws SQLException {
         return jdbcTemplate.query("select * from employee where phoneNumber=?",
-                new Object[]{phoneNumber},
-                new EmpMapper()).stream().findAny().orElse(null);
+                        new Object[]{phoneNumber},
+                        new EmpMapper())
+                .stream()
+                .findAny()
+                .orElse(null);
     }
 
     @Override
@@ -48,11 +72,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public void delete(Long employeeId) throws SQLException {
         jdbcTemplate.update("delete from employee where employeeId=?", employeeId);
-    }
-
-    @Override
-    public Employee getByTypePost(Employee.TypePost typePost) {
-        return null;
     }
 
     @Override
