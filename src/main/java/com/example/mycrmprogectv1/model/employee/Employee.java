@@ -17,7 +17,7 @@ public class Employee {
     private String address;
     private String email;
     private String postOn;
-    private int age;
+    private int    age;
 
     private LocalDateTime birth;
     private Company companyId;

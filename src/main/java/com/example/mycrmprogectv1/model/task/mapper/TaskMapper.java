@@ -19,16 +19,13 @@ public class TaskMapper implements RowMapper<Task> {
         task.setTaskId(rs.getLong("id"));
         task.setName(rs.getString("name"));
         task.setDescription(rs.getString("description"));
-
-
-        task.setCreation(rs.getTimestamp("creation").toLocalDateTime()); // до работать
-        //task.setStart(rs.getTimestamp("start"));         // LocalDateTime
-        //task.setEnding(rs.getTimestamp("ending"));       // LocalDateTime
+        task.setCreation(rs.getTimestamp("creation").toLocalDateTime());
+        task.setStart(rs.getTimestamp("start").toLocalDateTime());
+        task.setEnding(rs.getTimestamp("ending").toLocalDateTime());
 
         Action action = new Action();
         action.setActionId(rs.getLong("actionId"));
         action.setName(rs.getString("name"));
-        // action.setTypeAction(TypeAction.valueOf(rs.getString("typeAction")));
         task.setActionId(action);//7 task
 
         Status status = new Status();
@@ -48,9 +45,7 @@ public class TaskMapper implements RowMapper<Task> {
         contact.setEmail(rs.getString("email"));
         contact.setPostOn(rs.getString("postOn"));
 
-
         contact.setPost(Contact.TypePost.valueOf(rs.getString("post")));
-
 
         Company company = new Company();
         company.setCompanyId(rs.getLong("companyId"));
@@ -62,8 +57,7 @@ public class TaskMapper implements RowMapper<Task> {
         company.setEmail(rs.getString("email"));
         company.setWebsite(rs.getString("website"));
         company.setComment(rs.getString("comment"));
-        //company.setCreation(rs.getTimestamp("creation")); // LocalDateTime
-        company.setCompanyId(rs.getLong("contactId"));
+        company.setCreation(rs.getTimestamp("creation").toLocalDateTime());
         company.setTypeCompany(Company.TypeCompany.valueOf(rs.getString("typeCompany")));
 
         contact.setCompanyId(company); // Company
@@ -80,12 +74,11 @@ public class TaskMapper implements RowMapper<Task> {
         employee.setEmail(rs.getString("email"));
         employee.setPostOn(rs.getString("postOn"));
         employee.setAge(rs.getInt("age"));
-        // employee.setBirth(rs.getTimestamp("birth"));// LocalDateTime
+        employee.setBirth(rs.getTimestamp("birth").toLocalDateTime());
         employee.setCompanyId(company);
         employee.setPost(Employee.TypePost.valueOf(rs.getString("post")));
 
         task.setEmployeeId(employee);
-
 
         return task;
     }

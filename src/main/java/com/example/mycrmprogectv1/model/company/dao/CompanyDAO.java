@@ -1,5 +1,6 @@
 package com.example.mycrmprogectv1.model.company.dao;
 import com.example.mycrmprogectv1.model.company.Company;
+import com.example.mycrmprogectv1.model.task.Task;
 
 import java.sql.SQLException;
 import java.util.List;

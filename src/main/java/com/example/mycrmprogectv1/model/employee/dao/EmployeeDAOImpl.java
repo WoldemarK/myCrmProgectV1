@@ -17,7 +17,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public void save(Employee employee) throws SQLException {
         jdbcTemplate.update("insert into employee " +
-                        "(employeeId,name,surname,phoneNumber,city,country,address,email,postOn,age,birth,companyId,post) " +
+                        "(employeeId,name,surname,phoneNumber," +
+                        "city,country,address,email," +
+                        "postOn,age,birth,companyId,post) " +
                         "values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 employee.getEmployeeId(),
                 employee.getName(),
@@ -35,7 +37,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public Employee getName(String name) throws SQLException {
+    public Employee findByName(String name) throws SQLException {
         return jdbcTemplate.query("select * from employee where name=?",
                         new Object[]{name},
                         new EmpMapper())
@@ -45,7 +47,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public Employee getById(Long employeeId) throws SQLException {
+    public Employee findById(Long employeeId) throws SQLException {
         return jdbcTemplate.query("select * from employee where employeeId=?",
                         new Object[]{employeeId},
                         new EmpMapper())
@@ -55,18 +57,23 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public Employee findByPhoneNumber(String phoneNumber) throws SQLException {
-        return jdbcTemplate.query("select * from employee where phoneNumber=?",
-                        new Object[]{phoneNumber},
-                        new EmpMapper())
-                .stream()
-                .findAny()
-                .orElse(null);
-    }
-
-    @Override
     public void update(Long employeeId, Employee employee) throws SQLException {
-
+        jdbcTemplate.update("update employee set name=?, surname=?, phoneNumber=?, " +
+                        "city=?,country=?,address=?,email=?, postOn=?, age=?," +
+                        "birth=?,companyId=?, post=?",
+                employee.getName(),
+                employee.getSurname(),
+                employee.getPhoneNumber(),
+                employee.getCity(),
+                employee.getCountry(),
+                employee.getAddress(),
+                employee.getEmail(),
+                employee.getPostOn(),
+                employee.getAge(),
+                employee.getBirth(),
+                employee.getCompanyId(),
+                employee.getPost(),
+                employee);
     }
 
     @Override

@@ -16,7 +16,8 @@ public class StatusDTOImpl implements StatusDTO {
 
     @Override
     public void save(Status status) {
-        jdbcTemplate.update("insert into status values (?,?,?)");
+        jdbcTemplate.update("insert into status(name,typeStatus) values (?,?)",
+                status.getName(),status.getTypeStatus(), status);
     }
 
     @Override
@@ -32,7 +33,7 @@ public class StatusDTOImpl implements StatusDTO {
 
     @Override
     public Status finById(Long statusId) {
-        return jdbcTemplate.query("select * from action where statusId=?",
+        return jdbcTemplate.query("select * from status where statusId=?",
                 new Object[]{statusId},
                 new BeanPropertyRowMapper<>(Status.class))
                 .stream()
@@ -50,7 +51,9 @@ public class StatusDTOImpl implements StatusDTO {
     @Override
     public void update(Long statusId, Status status) {
         jdbcTemplate.update("update status set name=?, typeStatus =? where statusid=?",
-                status.getName(), status.getTypeStatus());
+                status.getName(),
+                status.getTypeStatus(),
+                status);
     }
 
     @Override

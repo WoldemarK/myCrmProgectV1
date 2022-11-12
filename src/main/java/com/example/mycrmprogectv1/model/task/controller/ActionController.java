@@ -20,4 +20,5 @@ public class ActionController {
     public ResponseEntity<List<Action>> getAll() {
         return ResponseEntity.ok(actionDAO.getAllAction());
     }
+
 }

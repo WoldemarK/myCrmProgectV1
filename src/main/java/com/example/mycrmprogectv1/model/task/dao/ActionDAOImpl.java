@@ -15,7 +15,10 @@ public class ActionDAOImpl implements ActionDAO {
 
     @Override
     public void save(Action action) {
-        jdbcTemplate.update("insert into action values (?,?,?)");
+        jdbcTemplate.update("insert into action (name,typeAction )values (?,?)",
+                action.getName(),
+                action.getTypeAction(),
+                action);
 
     }
 

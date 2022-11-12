@@ -18,7 +18,9 @@ public class CompanyDAOImpl implements CompanyDAO {
 
     @Override
     public void save(Company company) throws SQLException {
-        jdbcTemplate.update("insert into company values(?,?,?,?,?,?,?,?,?,?,?)",
+        jdbcTemplate.update("insert into company(name,phonenumber, city, country, " +
+                        "address, email, website, comment,creation,contactId,typeCompany) " +
+                        "values(?,?,?,?,?,?,?,?,?,?,?)",
                 company.getName(),
                 company.getPhoneNumber(),
                 company.getCity(),
@@ -34,7 +36,8 @@ public class CompanyDAOImpl implements CompanyDAO {
 
     @Override
     public Company findById(Long companyId) throws SQLException {
-        return jdbcTemplate.query("select *from company where companyId=?", new Object[]{companyId},
+        return jdbcTemplate.query("select * from company where companyId=?",
+                        new Object[]{companyId},
                         new BeanPropertyRowMapper<>(Company.class))
                 .stream()
                 .findAny()
@@ -43,7 +46,7 @@ public class CompanyDAOImpl implements CompanyDAO {
 
     @Override
     public Company findByName(String name) throws SQLException {
-        return jdbcTemplate.query("select *from company where name=?",
+        return jdbcTemplate.query("select * from company where name=?",
                         new Object[]{name},
                         new BeanPropertyRowMapper<>(Company.class))
                 .stream()

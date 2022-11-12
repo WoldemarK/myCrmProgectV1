@@ -8,19 +8,10 @@ import java.util.List;
 public interface ContactDAO {
 
     void save(Contact contact) throws SQLException;
-
     Contact findById(Long contactId)throws SQLException;
-
     Contact findByName(String name)throws SQLException;
-
-    Contact findByPhoneNumber(String phoneNumber)throws SQLException;
-
     List<Contact> getAllContact() throws SQLException;
-
-    void findByContactAndCompany()throws SQLException;
-
     void update(Long contactId, Contact contact) throws SQLException;
-
     void delete(Long contactId)throws SQLException;
 
 

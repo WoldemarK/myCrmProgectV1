@@ -15,7 +15,18 @@ public class TaskDAOImpl implements TaskDAO {
 
     @Override
     public void save(Task task) {
-        jdbcTemplate.update("insert into task values (?,?,?,?,?,?,?,?,?)");
+        jdbcTemplate.update("insert into task (name,description,creation," +
+                        "start,ending,actionId,statusId,companyId,employeeId) values (?,?,?,?,?,?,?,?,?)",
+                task.getName(),
+                task.getDescription(),
+                task.getCreation(),
+                task.getStart(),
+                task.getEnding(),
+                task.getActionId(),
+                task.getActionId(),
+                task.getStatusId(),
+                task.getEmployeeId(),
+                task);
     }
 
     @Override
@@ -50,8 +61,10 @@ public class TaskDAOImpl implements TaskDAO {
                         "companyId=?," +
                         "employeeId=?" +
                         "where taskId =?",
-                task.getName(), task.getDescription(), task.getStart(), task.getEnding(),
-                task.getActionId(), task.getStatusId(), task.getCompanyId(), task.getEmployeeId(), taskId);
+                task.getName(), task.getDescription(),
+                task.getStart(), task.getEnding(),
+                task.getActionId(), task.getStatusId(),
+                task.getCompanyId(), task.getEmployeeId(), taskId);
     }
 
     @Override

@@ -13,9 +13,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class ContactDAOImpl implements ContactDAO {
-
     private final JdbcTemplate jdbcTemplate;
-
     @Override
     public void save(Contact contact) throws SQLException {
         jdbcTemplate.update("insert into contact(name,surname,phoneNumber," +
@@ -35,7 +33,6 @@ public class ContactDAOImpl implements ContactDAO {
                 contact.getPostOn());
 
     }
-
     @Override
     public Contact findById(Long contactId) throws SQLException {
         return jdbcTemplate.query("select *from contact where contactId=?",
@@ -57,28 +54,11 @@ public class ContactDAOImpl implements ContactDAO {
     }
 
     @Override
-    public Contact findByPhoneNumber(String phoneNumber) throws SQLException {
-        return jdbcTemplate.query("select *from contact where phoneNumber=?",
-                        new Object[]{phoneNumber},
-                        new BeanPropertyRowMapper<>(Contact.class))
-                .stream()
-                .findAny()
-                .orElse(null);
-    }
-
-    @Override
     public List<Contact> getAllContact() throws SQLException {
         return jdbcTemplate.query("select * from contact " +
                         "join company c on c.companyid = contact.companyid",
                 new ContactMapper());
     }
-
-    @Override
-    public void findByContactAndCompany() throws SQLException {
-
-    }
-
-
 
     @Override
     public void update(Long contactId, Contact contact) throws SQLException {

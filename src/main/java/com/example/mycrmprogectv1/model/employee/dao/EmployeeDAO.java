@@ -9,11 +9,9 @@ public interface EmployeeDAO {
 
     void save(Employee employee) throws SQLException;
 
-    Employee getName(String name) throws SQLException;
+    Employee findByName(String name) throws SQLException;
 
-    Employee getById(Long id) throws SQLException;
-
-    Employee findByPhoneNumber(String phoneNumber) throws SQLException;
+    Employee findById(Long id) throws SQLException;
 
     void update(Long id, Employee employee) throws SQLException;
 
