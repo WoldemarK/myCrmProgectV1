@@ -26,19 +26,22 @@ public class TaskController {
     }
 
     @PutMapping
-    public void update(Long id,  Task task) throws SQLException {
+    public void update(Long id, Task task) throws SQLException {
         this.taskDAO.update(id, task);
     }
+
     @DeleteMapping
     public void delete(Long id) throws SQLException {
         this.taskDAO.delete(id);
     }
+
     @GetMapping("/{id}")
-    private ResponseEntity<Task> finById(@PathVariable Long id){
+    private ResponseEntity<Task> finById(@PathVariable Long id) {
         return ResponseEntity.ok(taskDAO.findById(id));
     }
+
     @GetMapping("/{name}")
-    private ResponseEntity<Task>finByName(@RequestParam String name){
+    private ResponseEntity<Task> finByName(@RequestParam String name) {
         return ResponseEntity.ok(taskDAO.findByName(name));
     }
 }

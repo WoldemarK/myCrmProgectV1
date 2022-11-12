@@ -31,7 +31,7 @@ public class CompanyController {
     public void delete(Long id) throws SQLException {
         this.companyDAO.delete(id);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     private ResponseEntity<Company> finById(@PathVariable Long id) throws SQLException {
         return ResponseEntity.ok(companyDAO.findById(id));
     }

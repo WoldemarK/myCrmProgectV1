@@ -1,8 +1,7 @@
-package com.example.mycrmprogectv1.model.company.dao.contact;
+package com.example.mycrmprogectv1.model.contact;
 
 import com.example.mycrmprogectv1.model.company.Company;
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 @Data
 public class Contact {
@@ -16,13 +15,8 @@ public class Contact {
     private String country;
     private String address;
     private String email;
-    private String postOn;
+    private String post;
 
-    private Company companyId;
-    private TypePost post;
+    //private Company companyId;
 
-
-    public enum TypePost {
-        MANAGER, PURCHASING, DIRECTOR,
-    }
 }

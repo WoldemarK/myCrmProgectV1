@@ -6,14 +6,5 @@ import lombok.Data;
 public class Action {
     private Long actionId;
     private String name;
-    private TypeAction typeAction;
 
-
-    public enum TypeAction {
-        CALL,
-        SHOUT,
-        PREPARE,
-        BOOK_A_MEETING,
-        CALL_BACK
-    }
 }

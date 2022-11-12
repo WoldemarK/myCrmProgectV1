@@ -1,7 +1,7 @@
-package com.example.mycrmprogectv1.model.company.dao.contact.dao;
+package com.example.mycrmprogectv1.model.contact.dao;
 
-import com.example.mycrmprogectv1.model.company.dao.contact.Contact;
-import com.example.mycrmprogectv1.model.company.dao.contact.mapper.ContactMapper;
+import com.example.mycrmprogectv1.model.contact.Contact;
+import com.example.mycrmprogectv1.model.contact.mapper.ContactMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,25 +14,23 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ContactDAOImpl implements ContactDAO {
     private final JdbcTemplate jdbcTemplate;
+
     @Override
     public void save(Contact contact) throws SQLException {
-        jdbcTemplate.update("insert into contact(name,surname,phoneNumber," +
-                        "city,country,address,email" +
-                        ",postOn,companyId,post)" +
-                        "values (?,?,?,?,?,?,?,?,?,?)",
+        jdbcTemplate.update("insert into contact(name,surname,phoneNumber,city,country,address,email ,post)" +
+                        "values (?,?,?,?,?,?,?,?)",
                 contact.getName(),
                 contact.getSurname(),
                 contact.getPhoneNumber(),
                 contact.getCity(),
                 contact.getAddress(),
-                contact.getCompanyId(),
+               // contact.getCompanyId(),
                 contact.getEmail(),
                 contact.getPost(),
-                contact.getPost(),
-                contact.getContactId(),
-                contact.getPostOn());
+                contact.getContactId());
 
     }
+
     @Override
     public Contact findById(Long contactId) throws SQLException {
         return jdbcTemplate.query("select *from contact where contactId=?",
@@ -53,11 +51,16 @@ public class ContactDAOImpl implements ContactDAO {
                 .orElse(null);
     }
 
+    //    @Override
+//    public List<Contact> getAllContact() throws SQLException {
+//        return jdbcTemplate.query("select * from contact " +
+//                        "join company c on c.company_id = contact.contactId",
+//                new ContactMapper());
+//    }
+    //Потом удалить после тестов
     @Override
     public List<Contact> getAllContact() throws SQLException {
-        return jdbcTemplate.query("select * from contact " +
-                        "join company c on c.companyid = contact.companyid",
-                new ContactMapper());
+        return jdbcTemplate.query("select * from contact " ,new ContactMapper());
     }
 
     @Override
@@ -70,24 +73,23 @@ public class ContactDAOImpl implements ContactDAO {
                         "country=?," +
                         "address=?," +
                         "email=?," +
-                        "postOn=?," +
-                        "companyId=?," +
+                        "post=?," +
+                //  потом вкл  "companyId=?," +
                         "post=? where contactId=?",
                 contact.getName(),
                 contact.getSurname(),
                 contact.getPhoneNumber(),
                 contact.getCity(),
                 contact.getAddress(),
-                contact.getCompanyId(),
+              //  contact.getCompanyId(),
                 contact.getEmail(),
                 contact.getPost(),
-                contact.getPost(),
                 contact.getContactId(),
-                contact.getPostOn(), contactId);
+                contact.getPost(), contactId);
     }
 
     @Override
     public void delete(Long contactId) throws SQLException {
-        jdbcTemplate.update("delete from contact where contactId=?", contactId);
+        jdbcTemplate.update("delete from contact where contactId=?",contactId);
     }
 }

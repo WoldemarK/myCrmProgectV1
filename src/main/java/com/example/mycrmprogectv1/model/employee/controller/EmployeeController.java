@@ -32,7 +32,7 @@ public class EmployeeController {
         this.employeeDAO.update(id, employee);
     }
     @DeleteMapping
-    public void delete(Long id) throws SQLException {
+    public void delete(@PathVariable Long id) throws SQLException {
         this.employeeDAO.delete(id);
     }
     @GetMapping("/{id}")

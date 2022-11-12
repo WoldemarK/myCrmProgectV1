@@ -1,5 +1,5 @@
 package com.example.mycrmprogectv1.model.company;
-import com.example.mycrmprogectv1.model.company.dao.contact.Contact;
+import com.example.mycrmprogectv1.model.contact.Contact;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -21,14 +21,7 @@ public class Company {
     private LocalDateTime creation;
 
     private Contact contactId;
-    private TypeCompany typeCompany;
 
-    public enum TypeCompany {
-        CLIENT,
-        SUPPLIER,
-        COMPETITOR,
-        PARTNER
-    }
 
 }
 

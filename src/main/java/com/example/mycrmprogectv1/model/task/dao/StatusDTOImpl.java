@@ -16,8 +16,8 @@ public class StatusDTOImpl implements StatusDTO {
 
     @Override
     public void save(Status status) {
-        jdbcTemplate.update("insert into status(name,typeStatus) values (?,?)",
-                status.getName(),status.getTypeStatus(), status);
+        jdbcTemplate.update("insert into status(name) values (?,?)",
+                status.getName(), status);
     }
 
     @Override
@@ -50,9 +50,8 @@ public class StatusDTOImpl implements StatusDTO {
 
     @Override
     public void update(Long statusId, Status status) {
-        jdbcTemplate.update("update status set name=?, typeStatus =? where statusid=?",
+        jdbcTemplate.update("update status set name=?, where statusid=?",
                 status.getName(),
-                status.getTypeStatus(),
                 status);
     }
 

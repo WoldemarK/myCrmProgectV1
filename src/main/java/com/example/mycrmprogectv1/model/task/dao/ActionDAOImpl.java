@@ -15,9 +15,9 @@ public class ActionDAOImpl implements ActionDAO {
 
     @Override
     public void save(Action action) {
-        jdbcTemplate.update("insert into action (name,typeAction )values (?,?)",
+        jdbcTemplate.update("insert into action (name )values (?)",
                 action.getName(),
-                action.getTypeAction(),
+
                 action);
 
     }
@@ -51,8 +51,8 @@ public class ActionDAOImpl implements ActionDAO {
 
     @Override
     public void update(Long actionId, Action action) {
-        jdbcTemplate.update("update action set name=?, typeaction=? where actionId=?",
-                action.getName(), action.getTypeAction(), actionId);
+        jdbcTemplate.update("update action set name=?, where actionId=?",
+                action.getName(),  actionId);
     }
 
     @Override

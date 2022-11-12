@@ -1,7 +1,7 @@
-package com.example.mycrmprogectv1.model.company.dao.contact.controller;
+package com.example.mycrmprogectv1.model.contact.controller;
 
-import com.example.mycrmprogectv1.model.company.dao.contact.Contact;
-import com.example.mycrmprogectv1.model.company.dao.contact.dao.ContactDAO;
+import com.example.mycrmprogectv1.model.contact.Contact;
+import com.example.mycrmprogectv1.model.contact.dao.ContactDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +31,8 @@ public class ContactController {
         this.contactDAO.update(id, contact);
     }
 
-    @DeleteMapping
-    public void delete(Long id) throws SQLException {
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) throws SQLException {
         this.contactDAO.delete(id);
     }
 

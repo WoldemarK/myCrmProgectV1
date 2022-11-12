@@ -1,7 +1,7 @@
 package com.example.mycrmprogectv1.model.task.mapper;
 
 import com.example.mycrmprogectv1.model.company.Company;
-import com.example.mycrmprogectv1.model.company.dao.contact.Contact;
+import com.example.mycrmprogectv1.model.contact.Contact;
 import com.example.mycrmprogectv1.model.employee.Employee;
 import com.example.mycrmprogectv1.model.task.Action;
 import com.example.mycrmprogectv1.model.task.Status;
@@ -26,12 +26,11 @@ public class TaskMapper implements RowMapper<Task> {
         Action action = new Action();
         action.setActionId(rs.getLong("actionId"));
         action.setName(rs.getString("name"));
-        task.setActionId(action);//7 task
+        task.setActionId(action);
 
         Status status = new Status();
         status.setStatusId(rs.getLong("statusId"));
         status.setName(rs.getString("name"));
-        status.setTypeStatus(Status.TypeStatus.valueOf(rs.getString("typeStatus")));
         task.setStatusId(status);//8 task
 
         Contact contact = new Contact();
@@ -43,9 +42,9 @@ public class TaskMapper implements RowMapper<Task> {
         contact.setCountry(rs.getString("country"));
         contact.setAddress(rs.getString("address"));
         contact.setEmail(rs.getString("email"));
-        contact.setPostOn(rs.getString("postOn"));
+        contact.setPost(rs.getString("postOn"));
 
-        contact.setPost(Contact.TypePost.valueOf(rs.getString("post")));
+
 
         Company company = new Company();
         company.setCompanyId(rs.getLong("companyId"));
@@ -58,10 +57,10 @@ public class TaskMapper implements RowMapper<Task> {
         company.setWebsite(rs.getString("website"));
         company.setComment(rs.getString("comment"));
         company.setCreation(rs.getTimestamp("creation").toLocalDateTime());
-        company.setTypeCompany(Company.TypeCompany.valueOf(rs.getString("typeCompany")));
 
-        contact.setCompanyId(company); // Company
-        task.setCompanyId(company);// 9 task
+
+       // contact.setCompanyId(company);
+        task.setCompanyId(company);
 
         Employee employee = new Employee();
         employee.setEmployeeId(rs.getLong("employeeId"));
@@ -76,7 +75,6 @@ public class TaskMapper implements RowMapper<Task> {
         employee.setAge(rs.getInt("age"));
         employee.setBirth(rs.getTimestamp("birth").toLocalDateTime());
         employee.setCompanyId(company);
-        employee.setPost(Employee.TypePost.valueOf(rs.getString("post")));
 
         task.setEmployeeId(employee);
 

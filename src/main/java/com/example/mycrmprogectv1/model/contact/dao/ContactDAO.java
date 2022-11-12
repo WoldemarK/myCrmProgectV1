@@ -1,5 +1,5 @@
-package com.example.mycrmprogectv1.model.company.dao.contact.dao;
-import com.example.mycrmprogectv1.model.company.dao.contact.Contact;
+package com.example.mycrmprogectv1.model.contact.dao;
+import com.example.mycrmprogectv1.model.contact.Contact;
 import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;

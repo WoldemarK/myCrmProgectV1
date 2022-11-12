@@ -1,7 +1,7 @@
 package com.example.mycrmprogectv1.model.employee.mapper;
 
 import com.example.mycrmprogectv1.model.company.Company;
-import com.example.mycrmprogectv1.model.company.dao.contact.Contact;
+import com.example.mycrmprogectv1.model.contact.Contact;
 import com.example.mycrmprogectv1.model.employee.Employee;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -36,9 +36,9 @@ public class EmpMapper implements RowMapper<Employee> {
         company.setEmail(rs.getString("email"));
         company.setWebsite(rs.getString("website"));
         company.setComment(rs.getString("comment"));
-        //company.setCreation(rs.getTimestamp("creation")); // LocalDateTime
+       company.setCreation(rs.getTimestamp("creation").toLocalDateTime());
         company.setCompanyId(rs.getLong("contactId"));
-        company.setTypeCompany(Company.TypeCompany.valueOf(rs.getString("typeCompany")));
+
 
         employee.setCompanyId(company);
 
@@ -51,8 +51,7 @@ public class EmpMapper implements RowMapper<Employee> {
         contact.setCountry(rs.getString("country"));
         contact.setAddress(rs.getString("address"));
         contact.setEmail(rs.getString("email"));
-        contact.setPostOn(rs.getString("postOn"));
-        contact.setPost(Contact.TypePost.valueOf(rs.getString("post")));
+        contact.setPost(rs.getString("postOn"));
 
         company.setContactId(contact);
         return employee;
