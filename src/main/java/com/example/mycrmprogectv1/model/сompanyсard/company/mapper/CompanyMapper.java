@@ -1,7 +1,7 @@
 package com.example.mycrmprogectv1.model.сompanyсard.company.mapper;
 
 import com.example.mycrmprogectv1.model.сompanyсard.company.Company;
-import com.example.mycrmprogectv1.model.сompanyсard.contact.Contact;
+
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

@@ -1,11 +1,8 @@
 package com.example.mycrmprogectv1.model.сompanyсard.company;
 
-import com.example.mycrmprogectv1.model.сompanyсard.contact.Contact;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 public class Company {

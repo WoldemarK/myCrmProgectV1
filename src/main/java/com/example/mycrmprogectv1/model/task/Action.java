@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Action {
-    private Long actionId;
+    private Long Id;
     private String name;
 
 }

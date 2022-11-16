@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Status {
-    private Long statusId;
+    private Long Id;
     private String name;
 
 }

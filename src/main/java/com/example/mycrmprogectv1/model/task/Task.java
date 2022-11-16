@@ -8,11 +8,13 @@ import java.time.LocalDateTime;
 
 @Data
 public class Task {
-    private Long taskId;
+    private Long Id;
 
     private String name;
     private String description;
     private LocalDateTime creation;
+    private LocalDateTime update;
+
     private LocalDateTime start;
     private LocalDateTime ending;
 
@@ -21,8 +23,11 @@ public class Task {
     private Company companyId;
     private Employee employeeId;
 
+
     public Task() {
-        this.creation = LocalDateTime.now();
+        LocalDateTime date = LocalDateTime.now();
+        this.creation = date;
+        this.update = date;
     }
 
 

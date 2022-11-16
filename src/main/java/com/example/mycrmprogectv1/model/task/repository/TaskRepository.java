@@ -1,10 +1,10 @@
-package com.example.mycrmprogectv1.model.task.dao;
+package com.example.mycrmprogectv1.model.task.repository;
 
 import com.example.mycrmprogectv1.model.task.Task;
 
 import java.util.List;
 
-public interface TaskDAO {
+public interface TaskRepository {
 
     void save(Task task);
 

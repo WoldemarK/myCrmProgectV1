@@ -1,11 +1,11 @@
-package com.example.mycrmprogectv1.model.task.dao;
+package com.example.mycrmprogectv1.model.task.repository;
 
 
 import com.example.mycrmprogectv1.model.task.Action;
 
 import java.util.List;
 
-public interface ActionDAO {
+public interface ActionRepository {
     void save(Action action);
 
     Action findByName(String nameAction);

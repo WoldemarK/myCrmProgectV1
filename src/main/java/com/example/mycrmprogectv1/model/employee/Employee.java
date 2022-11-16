@@ -3,10 +3,12 @@ package com.example.mycrmprogectv1.model.employee;
 import com.example.mycrmprogectv1.model.сompanyсard.company.Company;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class Employee {
 
-    private Long employeeId;
+    private Long Id;
     private String name;
     private String surname;
     private String phoneNumber;
@@ -14,24 +16,16 @@ public class Employee {
     private String country;
     private String address;
     private String email;
-    private String postOn;
-    private int    age;
+    private String post;
+    private Long age;
+    private LocalDateTime creation;
+    private LocalDateTime update;
 
-    private String birth;
-    private Company companyId;
-    private TypePost post;
-
-    public enum TypePost {
-        MANAGER,
-        PURCHASING,
-        DIRECTOR,
-        ADMINISTRATOR,
-        LAWYER, ACCOUNTANT,
-        WAREHOUSE_MANAGER,
-        DEPARTMENT_HEAD,
-        GENERAL_DIRECTOR,
-        EXECUTIVE_DIRECTOR,
-        SECRETARY,
-        TECHNICAL_DIRECTOR
+    public Employee() {
+        LocalDateTime date = LocalDateTime.now();
+        this.creation = date;
+        this.update = date;
+        this.country = "Россия";
     }
+
 }

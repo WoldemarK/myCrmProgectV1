@@ -1,10 +1,10 @@
-package com.example.mycrmprogectv1.model.task.dao;
+package com.example.mycrmprogectv1.model.task.repository;
 
 import com.example.mycrmprogectv1.model.task.Status;
 
 import java.util.List;
 
-public interface StatusDTO {
+public interface StatusRepository {
     void save(Status status);
 
     Status findByName(String name);
