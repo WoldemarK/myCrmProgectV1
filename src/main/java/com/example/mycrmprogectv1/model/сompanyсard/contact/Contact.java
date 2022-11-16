@@ -9,13 +9,23 @@ import java.util.List;
 @Data
 public class Contact {
 
-    private Long contactId;
+    private Long Id;
     private String name;
     private String surname;
-    private String phoneNumber;
-    private String email;
+    /**
+     *
+     */
+    private List<String> phoneNumber;
+    /**
+     *
+     */
+    private List<String> email;
     private String post;
+
     private Company companyId;
+
+    private String comment;
+
 
 
     /**
@@ -28,7 +38,7 @@ public class Contact {
      * Типы контакта, которые можно выбрать при заполнении карточки
      * Contact types that can be selected when filling out the card
      */
-   public enum ContactTypePost {
+    public enum ContactTypePost {
         DIRECTOR,
         MANAGER,
         CLIENT,

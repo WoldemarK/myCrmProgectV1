@@ -1,0 +1,35 @@
+create table if not exists company
+(
+    id          serial primary key not null,
+    name        varchar(50)        not null,
+    phoneNumber varchar(50)        not null,
+    city        varchar(20)        not null,
+    country     varchar(20) default name('ROSSIA'),
+    address     varchar,
+    email       varchar,
+    website     varchar,
+    comment     varchar(1500),
+    typeCompany varchar(50),
+    creation    timestamp   default now(),
+    update      timestamp   default now(),
+    companyType companyType_state
+
+);
+create type companyType_state as enum('CLIENT', 'COMPETITOR', 'SUPPLIER');
+
+create table if not exists contact
+(
+    id              serial primary key,
+    name            varchar(50) not null,
+    surname         varchar(50) not null,
+    phoneNumber     varchar(50) not null,
+    email           varchar,
+    post            varchar(50),
+    comment         varchar(1500),
+    creation        timestamp default now(),
+    update          timestamp default now(),
+    contactTypePost companyType_state,
+    companyId       int references company (id) on delete cascade
+
+);
+create type contactTypePost_state as enum('DIRECTOR','MANAGER','CLIENT','COMPETITOR','DIRECTOR_IT');

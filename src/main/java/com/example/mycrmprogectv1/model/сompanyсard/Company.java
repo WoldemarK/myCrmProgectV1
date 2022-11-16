@@ -7,13 +7,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Data
 public class Company {
 
-    private Long companyId;
+    private Long Id;
     private String name;
-    private String surname;
     private String phoneNumber;
     private String city;
     private String country;
