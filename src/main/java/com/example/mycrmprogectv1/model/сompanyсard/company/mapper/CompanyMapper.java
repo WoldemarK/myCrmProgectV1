@@ -1,6 +1,6 @@
-package com.example.mycrmprogectv1.model.сompanyсard.mapper;
+package com.example.mycrmprogectv1.model.сompanyсard.company.mapper;
 
-import com.example.mycrmprogectv1.model.сompanyсard.Company;
+import com.example.mycrmprogectv1.model.сompanyсard.company.Company;
 import com.example.mycrmprogectv1.model.сompanyсard.contact.Contact;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -12,7 +12,7 @@ public class CompanyMapper implements RowMapper<Company> {
     public Company mapRow(ResultSet rs, int rowNum) throws SQLException {
 
         Company company = new Company();
-        company.setCompanyId(rs.getLong("companyId"));
+        company.setId(rs.getLong("Id"));
         company.setName(rs.getString("name"));
         company.setPhoneNumber(rs.getString("phoneNumber"));
         company.setCity(rs.getString("city"));
@@ -22,19 +22,21 @@ public class CompanyMapper implements RowMapper<Company> {
         company.setWebsite(rs.getString("website"));
         company.setComment(rs.getString("comment"));
         company.setCreation(rs.getTimestamp("creation").toLocalDateTime());
-        company.setCompanyId(rs.getLong("contactId"));
-        company.setCompanyType(Company.CompanyType.valueOf(rs.getString("contactTypePost")));
+        company.setUpdate(rs.getTimestamp("update").toLocalDateTime());
+        company.setTypeCompany(rs.getString("typeCompany"));
 
-        Contact contact = new Contact();
-        contact.setContactId(rs.getLong("contactId"));
-        contact.setName(rs.getString("name"));
-        contact.setSurname(rs.getString("surname"));
-        contact.setPhoneNumber(rs.getString("phoneNumber"));
-        contact.setEmail(rs.getString("email"));
-        contact.setPost(rs.getString("post"));
-        contact.setContactTypePost(Contact.ContactTypePost.valueOf(rs.getString("contactTypePost")));
 
-        company.setContactId(contact);
+//        Contact contact = new Contact();
+//        contact.setId(rs.getLong("Id"));
+//        contact.setName(rs.getString("name"));
+//        contact.setSurname(rs.getString("surname"));
+//        contact.setPhoneNumber(rs.getString("phoneNumber"));
+//        contact.setEmail(rs.getString("email"));
+//        contact.setPost(rs.getString("post"));
+//        contact.setComment(rs.getString("comment"));
+//        contact.setCreation(rs.getTimestamp("creation").toLocalDateTime());
+//        contact.setUpdate(rs.getTimestamp("update").toLocalDateTime());
+
         return company;
     }
 }

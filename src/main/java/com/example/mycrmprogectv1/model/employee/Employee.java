@@ -1,6 +1,6 @@
 package com.example.mycrmprogectv1.model.employee;
 
-import com.example.mycrmprogectv1.model.сompanyсard.Company;
+import com.example.mycrmprogectv1.model.сompanyсard.company.Company;
 import lombok.Data;
 
 @Data
