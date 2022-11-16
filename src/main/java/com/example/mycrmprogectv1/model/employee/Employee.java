@@ -1,9 +1,7 @@
 package com.example.mycrmprogectv1.model.employee;
 
-import com.example.mycrmprogectv1.model.company.Company;
+import com.example.mycrmprogectv1.model.сompanyсard.Company;
 import lombok.Data;
-
-import java.time.LocalDateTime;
 
 @Data
 public class Employee {
@@ -19,7 +17,7 @@ public class Employee {
     private String postOn;
     private int    age;
 
-    private LocalDateTime birth;
+    private String birth;
     private Company companyId;
     private TypePost post;
 

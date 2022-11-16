@@ -1,15 +1,16 @@
-package com.example.mycrmprogectv1.model.company.mapper;
+package com.example.mycrmprogectv1.model.сompanyсard.mapper;
 
-import com.example.mycrmprogectv1.model.company.Company;
-import com.example.mycrmprogectv1.model.contact.Contact;
+import com.example.mycrmprogectv1.model.сompanyсard.Company;
+import com.example.mycrmprogectv1.model.сompanyсard.contact.Contact;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CompanyMapper implements RowMapper {
+public class CompanyMapper implements RowMapper<Company> {
     @Override
-    public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public Company mapRow(ResultSet rs, int rowNum) throws SQLException {
+
         Company company = new Company();
         company.setCompanyId(rs.getLong("companyId"));
         company.setName(rs.getString("name"));
@@ -22,18 +23,17 @@ public class CompanyMapper implements RowMapper {
         company.setComment(rs.getString("comment"));
         company.setCreation(rs.getTimestamp("creation").toLocalDateTime());
         company.setCompanyId(rs.getLong("contactId"));
-
+        company.setCompanyType(Company.CompanyType.valueOf(rs.getString("contactTypePost")));
 
         Contact contact = new Contact();
         contact.setContactId(rs.getLong("contactId"));
         contact.setName(rs.getString("name"));
         contact.setSurname(rs.getString("surname"));
         contact.setPhoneNumber(rs.getString("phoneNumber"));
-        contact.setCity(rs.getString("city"));
-        contact.setCountry(rs.getString("country"));
-        contact.setAddress(rs.getString("address"));
         contact.setEmail(rs.getString("email"));
-        contact.setPost(rs.getString("postOn"));
+        contact.setPost(rs.getString("post"));
+        contact.setContactTypePost(Contact.ContactTypePost.valueOf(rs.getString("contactTypePost")));
+
         company.setContactId(contact);
         return company;
     }

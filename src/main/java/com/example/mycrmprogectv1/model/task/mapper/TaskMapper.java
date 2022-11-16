@@ -1,7 +1,7 @@
 package com.example.mycrmprogectv1.model.task.mapper;
 
-import com.example.mycrmprogectv1.model.company.Company;
-import com.example.mycrmprogectv1.model.contact.Contact;
+import com.example.mycrmprogectv1.model.сompanyсard.Company;
+import com.example.mycrmprogectv1.model.сompanyсard.contact.Contact;
 import com.example.mycrmprogectv1.model.employee.Employee;
 import com.example.mycrmprogectv1.model.task.Action;
 import com.example.mycrmprogectv1.model.task.Status;
@@ -38,12 +38,9 @@ public class TaskMapper implements RowMapper<Task> {
         contact.setName(rs.getString("name"));
         contact.setSurname(rs.getString("surname"));
         contact.setPhoneNumber(rs.getString("phoneNumber"));
-        contact.setCity(rs.getString("city"));
-        contact.setCountry(rs.getString("country"));
-        contact.setAddress(rs.getString("address"));
         contact.setEmail(rs.getString("email"));
-        contact.setPost(rs.getString("postOn"));
-
+        contact.setPost(rs.getString("post"));
+        contact.setContactTypePost(Contact.ContactTypePost.valueOf(rs.getString("contactTypePost")));
 
 
         Company company = new Company();
@@ -71,9 +68,9 @@ public class TaskMapper implements RowMapper<Task> {
         employee.setCountry(rs.getString("country"));
         employee.setAddress(rs.getString("address"));
         employee.setEmail(rs.getString("email"));
-        employee.setPostOn(rs.getString("postOn"));
+      //  employee.setPost(rs.getString("postOn"));
         employee.setAge(rs.getInt("age"));
-        employee.setBirth(rs.getTimestamp("birth").toLocalDateTime());
+      //  employee.setBirth(rs.getTimestamp("birth").toLocalDateTime());
         employee.setCompanyId(company);
 
         task.setEmployeeId(employee);

@@ -1,9 +1,7 @@
 package com.example.mycrmprogectv1.model.employee.controller;
 
-import com.example.mycrmprogectv1.model.company.Company;
 import com.example.mycrmprogectv1.model.employee.Employee;
 import com.example.mycrmprogectv1.model.employee.dao.EmployeeDAOImpl;
-import com.example.mycrmprogectv1.model.employee.mapper.EmpMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

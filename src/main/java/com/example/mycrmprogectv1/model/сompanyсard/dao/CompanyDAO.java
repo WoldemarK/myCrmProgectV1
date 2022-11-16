@@ -1,6 +1,5 @@
-package com.example.mycrmprogectv1.model.company.dao;
-import com.example.mycrmprogectv1.model.company.Company;
-import com.example.mycrmprogectv1.model.task.Task;
+package com.example.mycrmprogectv1.model.сompanyсard.dao;
+import com.example.mycrmprogectv1.model.сompanyсard.Company;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,7 +12,7 @@ public interface CompanyDAO {
 
     Company findByName(String nameCompany)throws SQLException;
 
-    List<Company> getAllCompany() throws SQLException;
+    List<Company> getInformationCompanyAndContact() throws SQLException;
 
     void update(Long id, Company company) throws SQLException;
 
