@@ -1,7 +1,7 @@
 package com.example.mycrmprogectv1.model.task.controller;
 
 import com.example.mycrmprogectv1.model.task.Task;
-import com.example.mycrmprogectv1.model.task.service.TaskService;
+import com.example.mycrmprogectv1.model.task.repository.TaskServiceRepositoryImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/task")
 @RequiredArgsConstructor
 public class TaskController {
-    private final TaskService service;
+    private final TaskServiceRepositoryImpl service;
 
     @PostMapping
     public void create(@RequestBody Task task) {

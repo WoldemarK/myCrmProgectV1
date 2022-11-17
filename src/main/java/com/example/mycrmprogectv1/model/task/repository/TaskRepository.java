@@ -12,8 +12,6 @@ public interface TaskRepository {
 
     Task findByName(String name);
 
-    void update(Long id, Task task);
-
     void delete(Long id);
 
     List<Task> getAllTask();
